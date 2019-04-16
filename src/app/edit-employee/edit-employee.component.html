@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+
+</head>
+
+<body style="margin: auto;">
+
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">Welcome
+                    to E-Office Suite.</span></li>
+                        <li>
+                            <a routerLink="/logout" class="nav-link">
+                                <i class="fa fa-sign-out"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="ibox-content">
+
+                <div>
+                    <form (ngSubmit)="onSubmit()" class="form-horizontal" *ngIf="updateEmp">
+                        <input type="hidden" [(ngModel)]="updateEmp.empId" value="{{updateEmp.empId}}" id="empId" name="empId">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Employee Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" value="{{updateEmp.empName}}" [(ngModel)]="updateEmp.empName" id="empName" name="empName" class="form-control" placeholder="Employee Name" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Employee Last Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" value="{{updateEmp.empLastName}}" [(ngModel)]="updateEmp.empLastName" name="empLastName" class="form-control" placeholder="Employee Last Name" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Employee Designation</label>
+                            <div class="col-sm-3">
+                                <input type="text" value="{{updateEmp.empDesignation}}" [(ngModel)]="updateEmp.empDesignation" name="empDesignation" class="form-control" placeholder="Employee Designation" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Employee Email</label>
+                            <div class="col-sm-3">
+                                <input type="email" value="{{updateEmp.empEmailID}}" [(ngModel)]="updateEmp.empEmailID" name="empEmailID" class="form-control" placeholder="Employee Email" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Employee JoiningDate</label>
+                            <div class="col-sm-3">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" value={{updateEmp.joiningDate}} [(ngModel)]="updateEmp.joiningDate" name="joiningDate" placeholder="Choose a date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary">Update Employee</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+</body>
+
+</html>

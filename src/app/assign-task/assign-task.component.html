@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+</head>
+
+<body style="margin: auto;">
+
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">Welcome
+                    to E-Office Suite.</span></li>
+                        <li>
+                            <a routerLink="/logout" class="nav-link">
+                                <i class="fa fa-sign-out"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="ibox-content">
+                <div>
+                    <form (ngSubmit)="onSubmit()" class="form-horizontal">
+                        <input type="hidden" [(ngModel)]="task.empID" value="{{task.empID}}" name="empId">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Task Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="taskName" [(ngModel)]="task.taskName" class="form-control" placeholder="Task Name" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Task Description</label>
+                            <div class="col-sm-3">
+                                <input type="text" name="empLastName" [(ngModel)]="task.taskDescription" class="form-control" placeholder="Task Description" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Status</label>
+                            <div class="col-sm-3">
+                                <input type="email" class="form-control" [(ngModel)]="task.status" name="empEmailID" placeholder="Status" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Start Date</label>
+                            <div class="col-sm-3">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="picker" [(ngModel)]="task.startDate" name="startDate" placeholder="Choose Start date">
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">End Date</label>
+                            <div class="col-sm-3">
+                                <mat-form-field>
+                                    <input matInput [matDatepicker]="pickers" [(ngModel)]="task.endDate" name="endDate" placeholder="Choose End date">
+                                    <mat-datepicker-toggle matSuffix [for]="pickers"></mat-datepicker-toggle>
+                                    <mat-datepicker #pickers></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary">Assign Task</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

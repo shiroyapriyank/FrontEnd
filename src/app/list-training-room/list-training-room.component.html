@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+
+</head>
+
+<body style="margin: auto;">
+
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">Welcome
+                    to E-Office Suite.</span></li>
+                        <li>
+                            <a routerLink="/logout" class="nav-link">
+                                <i class="fa fa-sign-out"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+            <div class="ibox-content">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Room name</th>
+                            <th>Floor</th>
+                            <th>Capacity</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let trainList of training">
+                            <td>{{trainList.name}}</td>
+                            <td>{{trainList.floor}}</td>
+                            <td>{{trainList.capacity}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Welcome Admin', 'Welcome to Dashboard');
+
+            }, 1300);
+
+        });
+    </script>
+
+</body>
+
+</html>

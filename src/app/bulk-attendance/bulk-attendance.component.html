@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+
+</head>
+
+<body style="margin: auto;">
+
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">Welcome
+                    to E-Office Suite.</span></li>
+                        <li>
+                            <a routerLink="/logout" class="nav-link">
+                                <i class="fa fa-sign-out"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+            <div class="ibox-content">
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Employee Name</th>
+                            <th>Employee LastName</th>
+                            <th>Employee Designation</th>
+                        </tr>
+                    </thead>
+
+                    <tbody *ngFor="let emp of employee">
+                        <tr>
+                            <td>
+                                <input type="checkbox" name="empID" [(ngModel)]="emp.empId">
+                            </td>
+                            <td>
+                                <p>{{emp.empName}}
+                                </p>
+                            </td>
+                            <td>
+                                <p>{{emp.empLastName}}
+                                </p>
+                            </td>
+                            <td>
+                                <p>{{emp.empDesignation}}
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <label class="col-sm-1 control-label">Attendance Date</label>
+                    <div class="col-sm-3">
+                        <input type="date" class="form-control" name="attendanceDate" id="attendanceDate">
+                    </div>
+                </div>
+                <button class="btn btn-primary" (click)="showCheckBox()">Check as Present</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Welcome Admin', 'Welcome to Dashboard');
+
+            }, 1300);
+        });
+    </script>
+
+</body>
+
+</html>

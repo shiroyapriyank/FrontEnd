@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+
+</head>
+
+<body style="margin: auto;">
+
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">Welcome
+                    to E-Office Suite.</span></li>
+                        <li>
+                            <a routerLink="/logout" class="nav-link">
+                                <i class="fa fa-sign-out"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+
+                </nav>
+            </div>
+
+            <div class="ibox-content">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th class="hidden">Id</th>
+                            <th>Employee Name</th>
+                            <th>Employee LastName</th>
+                            <th>Employee Email</th>
+                            <th>Employee Designation</th>
+                            <th>Employee Joining Date</th>
+
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr *ngFor="let emp of employee">
+                            <td class="hidden"></td>
+                            <td>{{emp.empName}}</td>
+                            <td>{{emp.empLastName}}</td>
+                            <td>{{emp.empEmailID}}</td>
+                            <td>{{emp.empDesignation}}</td>
+                            <td>{{emp.joiningDate}}</td>
+                            <td><button class="btn btn-primary" (click)="loadEmptoUpdate(emp)" type="submit">UPDATE</button></td>
+                            <td><button class="btn btn-warning" (click)="assignTask(emp)" type="submit">ASSIGN TASK</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function() {
+            setTimeout(function() {
+                toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+                toastr.success('Welcome Admin', 'Welcome to Dashboard');
+
+            }, 1300);
+
+        });
+    </script>
+
+</body>
+
+</html>

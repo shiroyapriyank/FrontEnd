@@ -14,7 +14,7 @@ export class EditEmployeeComponent implements OnInit {
   editForm: FormGroup;
   empId: number;
  // updateEmp: Employee = new Employee();
- updateEmp = new Employee();
+ updateEmps: Employee[];
   constructor(private formBuilder: FormBuilder, private router: Router, private service: EmpServiceService) { }
 
   ngOnInit() {
@@ -24,15 +24,14 @@ export class EditEmployeeComponent implements OnInit {
       this.router.navigate(['list']);
       return;
     }
-    this.service.getEmployeeById(+this.empId).subscribe(data => {this.updateEmp = data; console.log(data); }); }
+    this.service.getEmployeeById(+this.empId).subscribe(data => {this.updateEmps = data; console.log(data); }); }
 
-  onSubmit() {
-    this.service.updateEmployee(this.empId , this.updateEmp).subscribe(
-      data => {
-        this.router.navigate(['list']);
-      },
-      error => {
-        alert(error);
-      });
+  onSubmit(empL: Employee) {
+    console.log(empL);
+    this.service.updateEmployee(empL.empId, empL).subscribe(
+      data => console.log(data),
+      error => console.log(error)
+    );
+    this.router.navigate(['/list']);
 }
 }

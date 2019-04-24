@@ -50,8 +50,8 @@
                             <td>{{tasklist.empID}}</td>
                             <td>{{tasklist.taskName}}</td>
                             <td>{{tasklist.taskDescription}}</td>
-                            <td>{{tasklist.startDate}}</td>
-                            <td>{{tasklist.endDate}}</td>
+                            <td>{{tasklist.startDate | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{tasklist.endDate | date: 'dd/MM/yyyy'}}</td>
                             <td>{{tasklist.status}}</td>
                         </tr>
                     </tbody>

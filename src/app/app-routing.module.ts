@@ -14,6 +14,14 @@ import { AddTrainingRoomComponent } from './add-training-room/add-training-room.
 import { ListTrainingRoomComponent } from './list-training-room/list-training-room.component';
 import { ListMeetingRoomComponent } from './list-meeting-room/list-meeting-room.component';
 import { EmployeeHomeComponent } from './employee-home/employee-home.component';
+import { EmpTaskComponent } from './emp-task/emp-task.component';
+import { RequestTrainingRoomComponent } from './request-training-room/request-training-room.component';
+import { RequestMeetingRoomComponent } from './request-meeting-room/request-meeting-room.component';
+import { LeaveRequestComponent } from './leave-request/leave-request.component';
+import { NoticeBoardComponent } from './notice-board/notice-board.component';
+import { ListLeaveRequestComponent } from './list-leave-request/list-leave-request.component';
+import { ViewAttendanceComponent } from './view-attendance/view-attendance.component';
+import { EmpAttendanceComponent } from './emp-attendance/emp-attendance.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'  },
@@ -30,7 +38,15 @@ const routes: Routes = [
   { path: 'training' , component: AddTrainingRoomComponent},
   { path: 'trainingList' , component: ListTrainingRoomComponent},
   { path: 'meetingList' , component: ListMeetingRoomComponent},
-  { path: 'empHome' , component: EmployeeHomeComponent }
+  { path: 'empHome' , component: EmployeeHomeComponent },
+  { path: 'taskStatus' , component: EmpTaskComponent },
+  { path: 'requestTrainingRoom' , component: RequestTrainingRoomComponent },
+  { path: 'requestMeetingRoom' , component: RequestMeetingRoomComponent },
+  { path: 'leave' , component: LeaveRequestComponent },
+  { path: 'notice' , component: NoticeBoardComponent },
+  { path: 'leaveRequest' , component: ListLeaveRequestComponent },
+  { path: 'viewPresent' , component: ViewAttendanceComponent },
+  { path: 'empPresent' , component: EmpAttendanceComponent }
 
 ];
 

@@ -53,7 +53,7 @@
                             <td>{{emp.empLastName}}</td>
                             <td>{{emp.empEmailID}}</td>
                             <td>{{emp.empDesignation}}</td>
-                            <td>{{emp.joiningDate}}</td>
+                            <td>{{emp.joiningDate | date: 'dd/MM/yyyy'}}</td>
                             <td><button class="btn btn-primary" (click)="loadEmptoUpdate(emp)" type="submit">UPDATE</button></td>
                             <td><button class="btn btn-warning" (click)="assignTask(emp)" type="submit">ASSIGN TASK</button></td>
                         </tr>

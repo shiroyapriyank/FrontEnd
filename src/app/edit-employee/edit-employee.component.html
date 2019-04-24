@@ -33,44 +33,43 @@
             <div class="ibox-content">
 
                 <div>
-                    <form (ngSubmit)="onSubmit()" class="form-horizontal" *ngIf="updateEmp">
-                        <input type="hidden" [(ngModel)]="updateEmp.empId" value="{{updateEmp.empId}}" id="empId" name="empId">
+                    <form (ngSubmit)="f.form.valid && onSubmit(updateEmp)" name="form" #f="ngForm" class="form-horizontal" *ngFor="let updateEmp of updateEmps">
+                        <input type="hidden" [(ngModel)]="updateEmp.empId" id="empId" name="empId">
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee Name</label>
                             <div class="col-sm-3">
-                                <input type="text" value="{{updateEmp.empName}}" [(ngModel)]="updateEmp.empName" id="empName" name="empName" class="form-control" placeholder="Employee Name" required />
+                                <input type="text" #empName="ngModel" [(ngModel)]="updateEmp.empName" id="empName" name="empName" class="form-control" placeholder="Employee Name" [ngClass]="{'is-invalid': f.submitted && empName.invalid }" required />
+                                <div *ngIf="f.submitted && empName.invalid" class="invalid-feedback">
+                                    <div *ngIf="empName?.errors.required">First Name is required</div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee Last Name</label>
                             <div class="col-sm-3">
-                                <input type="text" value="{{updateEmp.empLastName}}" [(ngModel)]="updateEmp.empLastName" name="empLastName" class="form-control" placeholder="Employee Last Name" required />
+                                <input type="text" [(ngModel)]="updateEmp.empLastName" name="empLastName" class="form-control" placeholder="Employee Last Name" required />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee Designation</label>
                             <div class="col-sm-3">
-                                <input type="text" value="{{updateEmp.empDesignation}}" [(ngModel)]="updateEmp.empDesignation" name="empDesignation" class="form-control" placeholder="Employee Designation" required />
+                                <input type="text" [(ngModel)]="updateEmp.empDesignation" name="empDesignation" class="form-control" placeholder="Employee Designation" required />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee Email</label>
                             <div class="col-sm-3">
-                                <input type="email" value="{{updateEmp.empEmailID}}" [(ngModel)]="updateEmp.empEmailID" name="empEmailID" class="form-control" placeholder="Employee Email" required />
+                                <input type="email" [(ngModel)]="updateEmp.empEmailID" name="empEmailID" class="form-control" placeholder="Employee Email" required />
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee JoiningDate</label>
                             <div class="col-sm-3">
-                                <mat-form-field>
-                                    <input matInput [matDatepicker]="picker" value={{updateEmp.joiningDate}} [(ngModel)]="updateEmp.joiningDate" name="joiningDate" placeholder="Choose a date">
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker #picker></mat-datepicker>
-                                </mat-form-field>
+                                <input type="date" value="{{updateEmp.joiningDate | date: 'yyyy-MM-dd'}}" class="form-control" disabled/>
                             </div>
                         </div>
 

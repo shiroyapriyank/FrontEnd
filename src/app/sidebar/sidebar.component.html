@@ -16,35 +16,71 @@
         </li>
         <ul class="nav metismenu" id="side-menu">
 
-            <li><a routerLink="/addEmployee" role="button" routerLinkActive="active"><i class="fa fa-users"></i> <span
+
+
+            <li><a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart-o"></i> <span
+                    class="nav-label">UserMaster</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" id="homeSubmenu">
+                    <li><a routerLink="/addEmployee" role="button" routerLinkActive="active"><i class="fa fa-users"></i> <span
         class="nav-label">Add
         Employee</span></a>
-            </li>
-            <li><a routerLink="/list" role="button" routerLinkActive="active"><i class="fa fa-users"></i> <span
+                    </li>
+                    <li><a routerLink="/list" role="button" routerLinkActive="active"><i class="fa fa-users"></i> <span
               class="nav-label">View
               Employee</span></a>
+                    </li>
+                </ul>
             </li>
+
+
+
+            <li><a href="#atten" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart-o"></i> <span
+                class="nav-label">Attendance</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" id="atten">
+                    <li><a routerLink="/bulk" role="button" routerLinkActive="active"><i class="fa fa-check-double"></i> <span
+                        class="nav-label">Bulk Attendance</span></a>
+                    </li>
+                    <li><a routerLink="/viewPresent" role="button" routerLinkActive="active"><i class="fa fa-check-double"></i> <span
+                        class="nav-label">View Attendance</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li><a href="#meeting" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart-o"></i> <span
+                class="nav-label">Meeting Room</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" id="meeting">
+                    <li><a routerLink="/meeting" role="button" routerLinkActive="active"><i class="fa fa-handshake"></i> <span
+                            class="nav-label">Add Meeting Room</span></a>
+                    </li>
+                    <li><a routerLink="/meetingList" role="button" routerLinkActive="active"><i class="fa fa-handshake"></i> <span
+                            class="nav-label">View Meeting Room</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
+            <li><a href="#training" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-bar-chart-o"></i> <span
+                class="nav-label">Training Room</span><span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level collapse" id="training">
+                    <li><a routerLink="/training" role="button" routerLinkActive="active"><i class="fa fa-desktop"></i> <span
+                            class="nav-label">Add Training Room</span></a>
+                    </li>
+                    <li><a routerLink="/trainingList" role="button" routerLinkActive="active"><i class="fa fa-desktop"></i> <span
+                            class="nav-label">View Training Room</span></a>
+                    </li>
+                </ul>
+            </li>
+
+
             <li><a routerLink="/taskList" role="button" routerLinkActive="active"><i class="fa fa-tasks"></i> <span
-          class="nav-label">View Task</span></a>
+                class="nav-label">View Task</span></a>
             </li>
-            <li><a routerLink="/bulk" role="button" routerLinkActive="active"><i class="fa fa-check-double"></i> <span
-                class="nav-label">Bulk Attendance</span></a>
+            <li><a routerLink="/leaveRequest" role="button" routerLinkActive="active"><i class="fa fa-bed"></i> <span
+                      class="nav-label">Leave Requests</span></a>
             </li>
-            <li><a routerLink="/bulk" role="button" routerLinkActive="active"><i class="fa fa-check-double"></i> <span
-                class="nav-label">View Attendance</span></a>
-            </li>
-            <li><a routerLink="/meeting" role="button" routerLinkActive="active"><i class="fa fa-handshake"></i> <span
-                class="nav-label">Add Meeting Room</span></a>
-            </li>
-            <li><a routerLink="/meetingList" role="button" routerLinkActive="active"><i class="fa fa-handshake"></i> <span
-                class="nav-label">View Meeting Room</span></a>
-            </li>
-            <li><a routerLink="/training" role="button" routerLinkActive="active"><i class="fa fa-desktop"></i> <span
-                class="nav-label">Add Training Room</span></a>
-            </li>
-            <li><a routerLink="/trainingList" role="button" routerLinkActive="active"><i class="fa fa-desktop"></i> <span
-                class="nav-label">View Training Room</span></a>
-            </li>
+
+
 
 
         </ul>

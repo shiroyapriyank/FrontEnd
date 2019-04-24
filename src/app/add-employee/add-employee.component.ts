@@ -28,4 +28,8 @@ createEmployee: Employee = new Employee();
     this.createEmployee = new Employee();
   }
 
+  checkEmail(email: any) {
+    
+  }
+
 }

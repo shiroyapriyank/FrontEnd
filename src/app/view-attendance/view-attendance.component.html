@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+</head>
+
+<body style="margin: auto;">
+
+    <div id="wrapper">
+        <app-sidebar></app-sidebar>
+
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">Welcome
+                    to E-Office Suite.</span></li>
+                        <li>
+                            <a routerLink="/logout" class="nav-link">
+                                <i class="fa fa-sign-out"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="ibox-content">
+
+                <div>
+                    <form class="form-horizontal" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Select Date</label>
+                            <div class="col-sm-3">
+                                <input type="date" name="attendanceDate" [(ngModel)]="attendanceDate" class="form-control" />
+                            </div>
+                            <button class="btn btn-primary" type="submit">View Presents</button>
+                        </div>
+                        <div class="form-group">
+                        </div>
+                    </form>
+                </div>
+
+                <table class="table table-hover" *ngIf="attendance">
+                    <thead>
+                        <tr>
+                            <th>Employee ID</th>
+                            <th>Employee Name</th>
+                            <th>Date</th>
+                            <th>isPresent</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let atten of attendance">
+                            <td>{{atten.empId}}</td>
+                            <td>{{atten.employeeName}}</td>
+                            <td>{{atten.date | date: 'dd/MM/yyyy'}}</td>
+                            <td>{{atten.status}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- [disabled]="!f.valid" -->
+</body>
+
+</html>

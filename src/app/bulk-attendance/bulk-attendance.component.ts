@@ -1,9 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Employee } from '../employee';
-import { Observable } from 'rxjs';
 import { EmpServiceService } from '../emp-service.service';
 import { Router } from '@angular/router';
-import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-bulk-attendance',
@@ -13,20 +11,38 @@ import { first } from 'rxjs/operators';
 export class BulkAttendanceComponent implements OnInit {
   employee: Employee[];
   attendanceDate: Date;
-  checkBox: Employee[];
-  constructor(private service: EmpServiceService, private route: Router) { }
+  isPresent = false;
+  userIds = [];
+  constructor(private service: EmpServiceService, private route: Router) {
+   }
   ngOnInit() {
     this.reLoadData();
-  }
+    }
 
   reLoadData() {
-      this.service.getEmployeeList().subscribe(data => {
-      this.employee = data;
-      this.checkBox = data;
-      console.log(data);
-     });
+    this.service.getEmployeeList().subscribe(data => {
+    this.employee = data;
+    console.log(data);
+
+   });
+
   }
-  showCheckBox() {
+
+  onSubmit() {
+  console.log(this.employee);
+  this.userIds = [];
+
+  for (let  i = 0; i < this.employee.length; i++) {
+      if (+this.employee[i].empId !== 0) {
+        this.userIds[i] = this.employee[i].empId;
+      }
+   }
+  console.log(this.userIds);
+  console.log(this.attendanceDate);
+  this.service.isPresent(this.attendanceDate, this.userIds).subscribe(
+    data => console.log(data)
+  );
+  this.route.navigate(['viewPresent']);
   }
 
 }

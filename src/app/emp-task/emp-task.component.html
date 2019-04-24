@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Admin | Dashboard</title>
+</head>
+
+<body style="margin: auto;">
+
+    <div id="wrapper">
+        <app-emp-sidebar></app-emp-sidebar>
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+
+                <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+
+                    <ul class="nav navbar-top-links navbar-right">
+                        <li><span class="m-r-sm text-muted welcome-message">Welcome
+                    to E-Office Suite.</span></li>
+                        <li>
+                            <a routerLink="/logout" class="nav-link">
+                                <i class="fa fa-sign-out"></i> Log Out
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            <div class="ibox-content">
+                <div>
+                    <form class="form-horizontal" *ngFor="let task of tasks" (ngSubmit)="onSubmit(task)">
+                        <input type="hidden" name="empId" [(ngModel)]="task.empID">
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Task Name</label>
+                            <div class="col-sm-3">
+                                <input type="text" [(ngModel)]="task.taskName" name="taskName" class="form-control" disabled />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Task Description</label>
+                            <div class="col-sm-3">
+                                <textarea [(ngModel)]="task.taskDescription" name="empLastName" class="form-control" disabled></textarea>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Status</label>
+                            <div class="col-sm-3">
+                                <input type="email" [(ngModel)]="task.status" class="form-control" value="Pending" name="empEmailID" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">Start Date</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" [(ngModel)]="task.startDate" name="startDate" disabled />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label">End Date</label>
+                            <div class="col-sm-3">
+                                <input type="text" class="form-control" [(ngModel)]="task.endDate" name="endDate" disabled />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 col-sm-offset-2">
+                                <button class="btn btn-primary" type="submit">Change Status</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

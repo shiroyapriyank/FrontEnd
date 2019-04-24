@@ -17,15 +17,25 @@
             </div>
             <h3>Welcome to EOffice-Suite</h3>
             <p>Login in. To see it in action.</p>
-            <form class=" m-t" role="form">
+
+            <div class="alert alert-danger" [hidden]="!error">
+                There was a problem logging in. Please try again.
+            </div>
+            <form class=" m-t" role="form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
                 <div class="form-group">
-                    <input type="email" name="email" class="form-control" [(ngModel)]="userName" placeholder="Email" required="">
+                    <input type="email" class="form-control" formControlName="username" id="username" placeholder="Email" autocomplete="off" />
+                    <div class="error" *ngIf="loginForm.controls['username'].hasError('required') && loginForm.controls['username'].touched">Email is required</div>
                 </div>
                 <div class="form-group">
-                    <input type="password" name="pass" class="form-control" [(ngModel)]="password" placeholder="Password" required="">
+                    <input type="password" class="form-control" formControlName="password" id="pwd" autocomplete="off" placeholder="Password" />
+                    <div class="error" *ngIf="loginForm.controls['password'].hasError('required') && loginForm.controls['password'].touched">Password is required</div>
                 </div>
-                <button (click)="checkLogin()" class="btn btn-primary block full-width m-b">Login</button>
+                <button class="btn btn-success" [disabled]="loginForm.invalid">Login</button>
+                <div *ngIf="invalidLogin" class="error">
+                    <div>Invalid credentials.</div>
+                </div>
+
             </form>
         </div>
     </div>

@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Admin | Dashboard</title>
-
 </head>
 
 <body style="margin: auto;">
@@ -34,35 +33,49 @@
 
             <div class="ibox-content">
 
-
                 <div>
-                    <form (ngSubmit)="onSubmit()" class="form-horizontal">
+                    <form (ngSubmit)="f.form.valid && onSubmit()" name="form" #f="ngForm" class="form-horizontal" novalidate>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Task Name</label>
+                            <label class="col-sm-2 control-label">Employee Name</label>
                             <div class="col-sm-3">
-                                <input type="text" name="empName" [(ngModel)]="createEmployee.empName" class="form-control" placeholder="Employee Name" required />
+                                <input type="text" name="empName" #empName="ngModel" [(ngModel)]="createEmployee.empName" class="form-control" placeholder="Employee Name" [ngClass]="{'is-invalid': f.submitted && empName.invalid }" required/>
+                                <div *ngIf="f.submitted && empName.invalid" class="invalid-feedback">
+                                    <div *ngIf="empName?.errors.required">First Name is required</div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee Last Name</label>
                             <div class="col-sm-3">
-                                <input type="text" name="empLastName" class="form-control" [(ngModel)]="createEmployee.empLastName" placeholder="Employee Last Name" required />
+                                <input type="text" name="empLastName" #empLastName="ngModel" class="form-control" [(ngModel)]="createEmployee.empLastName" placeholder="Employee Last Name" [ngClass]="{'is-invalid': f.submitted && empLastName.invalid }" required />
+                                <div *ngIf="f.submitted && empLastName.invalid" class="invalid-feedback">
+                                    <div *ngIf="empLastName?.errors.required">Last Name is required</div>
+                                </div>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee Designation</label>
                             <div class="col-sm-3">
-                                <input type="text" class="form-control" name="empDesignation" [(ngModel)]="createEmployee.empDesignation" placeholder="Employee Designation" required />
+                                <input type="text" class="form-control" #empDesignation="ngModel" name="empDesignation" [(ngModel)]="createEmployee.empDesignation" placeholder="Employee Designation" [ngClass]="{'is-invalid': f.submitted && empDesignation.invalid }" required />
+                                <div *ngIf="f.submitted && empDesignation.invalid" class="invalid-feedback">
+                                    <div *ngIf="empDesignation?.errors.required">Employee Designation is required</div>
+                                </div>
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Employee Email</label>
                             <div class="col-sm-3">
-                                <input type="email" class="form-control" name="empEmailID" [(ngModel)]="createEmployee.empEmailID" placeholder="Employee Email" required />
+                                <input type="email" class="form-control" (onblur)="checkEmail(createEmployee.empEmailID)" name="empEmailID" #empEmailID="ngModel" [(ngModel)]="createEmployee.empEmailID" placeholder="Employee Email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" [ngClass]="{'is-invalid': f.submitted && empEmailID.invalid }"
+                                    required email/>
+                                <div *ngIf="f.submitted && empEmailID.invalid" class="invalid-feedback">
+                                    <div *ngIf="empEmailID?.errors.required">Employee Email is required</div>
+                                    <div *ngIf="empEmailID?.errors.email">Enter Valid Email Address</div>
+                                </div>
                             </div>
                         </div>
 
@@ -90,7 +103,7 @@
         </div>
     </div>
 
-
+    <!-- [disabled]="!f.valid" -->
 </body>
 
 </html>
